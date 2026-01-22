@@ -1,7 +1,15 @@
 import { Router } from "express";
-import { aggregate1, aggregate2, aggregate3, aggregate4, createBooks, createManyBooks, getAllBooks, getBookByExecludeGeners, getBookByGenre, getBookBySkipLimit, getBookByTitle, getBookByYearInteger, getBooksBeforeYear, updateFuture,} from './book.service.js';
+import { aggregate1, aggregate2, aggregate3, aggregate4, createBooks, createIndex, createManyBooks, getAllBooks, getBookByExecludeGeners, getBookByGenre, getBookBySkipLimit, getBookByTitle, getBookByYearInteger, getBooksBeforeYear, updateFuture,} from './book.service.js';
 
-const router=Router()
+const router = Router()
+
+// Create an index on the books collection for the title field.
+router.post("/index", async (req, res, next) => {
+  const result = await createIndex();
+  return res.status(201).json({ message: "Index Done", result });
+});
+
+// ----------------------------------------------
 
 //Insert one document into the books collection.
 router.post("/", async (req, res, next) => {

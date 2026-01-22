@@ -2,6 +2,12 @@
 
 import { bookModel } from "../../DB/model/book.model.js";
 
+export const createIndex = async () => {
+  const result = await bookModel.createIndex({ title: 1 });;
+
+  return result;
+};
+
 export const createBooks = async (inputs) => {
   const result = await bookModel.insertOne(inputs);
 

@@ -18,6 +18,7 @@ async function bootstrap() {
   //application routing
   app.get("/", (req, res) => res.send("Hello World!"));
     app.use("/books", bookRouter);
+    app.use("/collection/books", bookRouter);
     app.use("/collection", authorRouter);
     app.use("/logs", logRouter);
   
